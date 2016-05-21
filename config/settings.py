@@ -12,7 +12,7 @@ SECRET_KEY = '1_crq+d8!zw+72)e%%wfwa8%5)3h4i+de-%ql=2-$2k=y)16#+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['api.joway.wang']
 
 # Application definition
 
