@@ -10,9 +10,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '1_crq+d8!zw+72)e%%wfwa8%5)3h4i+de-%ql=2-$2k=y)16#+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', 'api.joway.wang', '127.0.0.1']
 
 # Application definition
 
@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'upload',
 
     # third part
+    'corsheaders',
+
 
 ]
 
@@ -41,7 +43,14 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:63342',
+    'i2pstudio.github.io',
+)
 
 ROOT_URLCONF = 'config.urls'
 
