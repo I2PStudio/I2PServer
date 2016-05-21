@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'upload',
 
     # third part
+    'corsheaders',
+
 
 ]
 
@@ -41,7 +43,14 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:63342',
+    'i2pstudio.github.io',
+)
 
 ROOT_URLCONF = 'config.urls'
 
