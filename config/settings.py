@@ -10,9 +10,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '1_crq+d8!zw+72)e%%wfwa8%5)3h4i+de-%ql=2-$2k=y)16#+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'api.joway.wang', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -30,8 +30,6 @@ INSTALLED_APPS = [
 
     # third part
     'corsheaders',
-
-
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -48,8 +46,9 @@ MIDDLEWARE_CLASSES = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:63342',
-    'i2pstudio.github.io',
+    # 'localhost:63342',
+    # 'i2pstudio.github.io',
+    '*',
 )
 
 ROOT_URLCONF = 'config.urls'
@@ -103,9 +102,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'Asia/Shanghai'
 
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'zh-hans'
 
 USE_I18N = True
 
