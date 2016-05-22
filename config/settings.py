@@ -123,5 +123,5 @@ except ImportError:
     pass
 
 # env secret
-QINIU_ACCESS_KEY = os.environ.get('QINIU_ACCESS_KEY', '')
-QINIU_SECRET_KEY = os.environ.get('QINIU_SECRET_KEY', '')
+QINIU_ACCESS_KEY = os.environ.get('QINIU_ACCESS_KEY', 'xxx')
+QINIU_SECRET_KEY = os.environ.get('QINIU_SECRET_KEY', 'xxx')
