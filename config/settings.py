@@ -121,3 +121,7 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+# env secret
+QINIU_ACCESS_KEY = os.environ.get('QINIU_ACCESS_KEY', '')
+QINIU_SECRET_KEY = os.environ.get('QINIU_SECRET_KEY', '')

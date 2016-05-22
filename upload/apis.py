@@ -1,5 +1,4 @@
 import logging
-import os
 
 from qiniu import Auth
 from rest_framework import viewsets
@@ -7,12 +6,11 @@ from rest_framework.decorators import list_route
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
+from config.settings import QINIU_SECRET_KEY, QINIU_ACCESS_KEY
 from upload.models import File
 
 logger = logging.getLogger(__name__)
 
-access_key = os.environ['QINIU_ACCESS_KEY']
-secret_key = os.environ['QINIU_SECRET_KEY']
 bucket_name = 'i2pserver'
 base_url = 'o7f53wsde.bkt.clouddn.com'
 
@@ -20,7 +18,7 @@ policy = {
     'callbackUrl': 'http://api.joway.wang/upload/callback/',
     'callbackBody': 'filename=$(fname)&filesize=$(fsize)&type=$(mimeType)&hash=$(etag)'
 }
-q = Auth(access_key, secret_key)
+q = Auth(QINIU_ACCESS_KEY, QINIU_SECRET_KEY)
 
 
 # 七牛云存储支持
