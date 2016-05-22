@@ -12,7 +12,7 @@ SECRET_KEY = '1_crq+d8!zw+72)e%%wfwa8%5)3h4i+de-%ql=2-$2k=y)16#+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*', ]
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -24,12 +24,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     # local
     'upload',
 
     # third part
     'corsheaders',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -46,10 +47,9 @@ MIDDLEWARE_CLASSES = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    # 'localhost:63342',
-    # 'i2pstudio.github.io',
     '*',
 )
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'config.urls'
 

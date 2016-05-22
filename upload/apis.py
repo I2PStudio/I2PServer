@@ -8,6 +8,7 @@ from rest_framework.response import Response
 
 from config.settings import QINIU_SECRET_KEY, QINIU_ACCESS_KEY
 from upload.models import File
+from upload.serializers import FileSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -34,7 +35,7 @@ class UploadViewSet(viewsets.GenericViewSet):
         token = q.upload_token(bucket_name, None, 7200, policy)
         return Response({"token": token})
 
-    @list_route(methods=['post', 'get'], permission_classes=[AllowAny, ])
+    @list_route(methods=['post'])
     def callback(self, request, *args, **kwargs):
         """
         Get open problem detail
@@ -46,10 +47,12 @@ class UploadViewSet(viewsets.GenericViewSet):
             'hash': request.POST.get('hash'),
         }
         logger.info(info)
-        File.objects.create(url=base_url + info['filename'],
+        print(info)
+        File.objects.create(url=base_url + '/' + info['filename'],
                             mime_type=info['type'], hash=info['hash'])
         return Response({"message": "callback success"})
 
     @list_route(methods=['get'])
     def data(self, request, *args, **kwargs):
-        return Response(self.get_queryset())
+        serializer = FileSerializer(self.get_queryset(), many=True)
+        return Response(serializer.data)
