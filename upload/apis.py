@@ -13,7 +13,7 @@ from upload.serializers import FileSerializer
 logger = logging.getLogger(__name__)
 
 bucket_name = 'i2pserver'
-base_url = 'o7kiomgt3.qnssl.com'
+base_url = 'https://o7kiomgt3.qnssl.com'
 
 policy = {
     'callbackUrl': 'http://api.i2p.pub/upload/callback/',
