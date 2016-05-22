@@ -1,4 +1,5 @@
 import logging
+import os
 
 from qiniu import Auth
 from rest_framework import viewsets
@@ -6,13 +7,12 @@ from rest_framework.decorators import list_route
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
-from config import settings
 from upload.models import File
 
 logger = logging.getLogger(__name__)
 
-access_key = settings.QINIU_ACCESS_KEY
-secret_key = settings.QINIU_SECRET_KEY
+access_key = os.environ['QINIU_ACCESS_KEY']
+secret_key = os.environ['QINIU_SECRET_KEY']
 bucket_name = 'i2pserver'
 base_url = 'o7f53wsde.bkt.clouddn.com'
 
