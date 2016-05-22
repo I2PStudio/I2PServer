@@ -17,7 +17,7 @@ base_url = 'o7f53wsde.bkt.clouddn.com'
 
 policy = {
     'callbackUrl': 'http://api.joway.wang/upload/callback/',
-    'callbackBody': 'filename=$(fname)&filesize=$(fsize)&type=$(mimeType)&hash=$(etag)'
+    'callbackBody': 'filename=$(fname)&key=$(key)&filesize=$(fsize)&type=$(mimeType)&hash=$(etag)'
 }
 q = Auth(QINIU_ACCESS_KEY, QINIU_SECRET_KEY)
 
@@ -41,6 +41,7 @@ class UploadViewSet(viewsets.GenericViewSet):
         Get open problem detail
         """
         info = {
+            'key': request.POST.get('key'),
             'filename': request.POST.get('filename'),
             'filesize': request.POST.get('filesize'),
             'type': request.POST.get('type'),
@@ -48,7 +49,7 @@ class UploadViewSet(viewsets.GenericViewSet):
         }
         logger.info(info)
         print(info)
-        File.objects.create(url=base_url + '/' + info['filename'],
+        File.objects.create(url=base_url + '/' + info['key'],
                             mime_type=info['type'], hash=info['hash'])
         return Response({"message": "callback success"})
 
