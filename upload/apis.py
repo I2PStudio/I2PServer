@@ -13,10 +13,10 @@ from upload.serializers import FileSerializer
 logger = logging.getLogger(__name__)
 
 bucket_name = 'i2pserver'
-base_url = 'o7f53wsde.bkt.clouddn.com'
+base_url = 'https://o7kiomgt3.qnssl.com'
 
 policy = {
-    'callbackUrl': 'http://api.joway.wang/upload/callback/',
+    'callbackUrl': 'http://api.i2p.pub/upload/callback/',
     'callbackBody': 'filename=$(fname)&key=$(key)&filesize=$(fsize)&type=$(mimeType)&hash=$(etag)'
 }
 q = Auth(QINIU_ACCESS_KEY, QINIU_SECRET_KEY)
