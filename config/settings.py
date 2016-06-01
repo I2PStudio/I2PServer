@@ -71,15 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -121,6 +112,20 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+# Database
+# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'NAME': os.environ["MYSQL_INSTANCE_NAME"],
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': os.environ["MYSQL_USERNAME"],
+        'PASSWORD': os.environ["MYSQL_PASSWORD"],
+        'HOST': os.environ["MYSQL_HOST"],
+        'PORT': os.environ["MYSQL_PORT"],
+    },
+}
 
 # env secret
 QINIU_ACCESS_KEY = os.environ.get('QINIU_ACCESS_KEY', 'xxx')
