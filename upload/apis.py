@@ -48,7 +48,6 @@ class UploadViewSet(viewsets.GenericViewSet):
             'hash': request.POST.get('hash'),
         }
         logger.info(info)
-        print(info)
         File.objects.create(url=base_url + '/' + info['key'],
                             mime_type=info['type'], hash=info['hash'])
         return Response({"message": "callback success"})

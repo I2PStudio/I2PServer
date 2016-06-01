@@ -71,7 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
@@ -118,12 +117,12 @@ except ImportError:
 
 DATABASES = {
     'default': {
-        'NAME': os.environ["MYSQL_INSTANCE_NAME"],
+        'NAME': os.environ.get('MYSQL_INSTANCE_NAME', 'xxx'),
         'ENGINE': 'django.db.backends.mysql',
-        'USER': os.environ["MYSQL_USERNAME"],
-        'PASSWORD': os.environ["MYSQL_PASSWORD"],
-        'HOST': os.environ["MYSQL_HOST"],
-        'PORT': os.environ["MYSQL_PORT"],
+        'USER': os.environ.get("MYSQL_USERNAME", 'xxx'),
+        'PASSWORD': os.environ.get("MYSQL_PASSWORD", 'xxx'),
+        'HOST': os.environ.get("MYSQL_HOST", 'xxx'),
+        'PORT': os.environ.get("MYSQL_PORT", 'xxx'),
     },
 }
 
