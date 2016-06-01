@@ -7,6 +7,5 @@ RUN pip install -r /tmp/requirements.txt
 ADD . /i2pserver
 
 WORKDIR /i2pserver
-RUN python manage.py migrate
 EXPOSE 8000
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
